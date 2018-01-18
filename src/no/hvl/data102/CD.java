@@ -80,8 +80,7 @@ public class CD {
 
 	@Override
 	public String toString() {
-		return "CD [cdNumber=" + cdNumber + ", artist=" + artist + ", cdTitle=" + cdTitle + ", releaseYear="
-				+ releaseYear + ", genre=" + genre + ", cdCompany=" + cdCompany + "]";
+		return cdNumber + "#" + artist + "#" + cdTitle + "#" + releaseYear + "#"  + genre + "#"  + cdCompany;
 	}
 	
 
