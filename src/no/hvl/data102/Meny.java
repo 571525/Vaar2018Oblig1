@@ -20,12 +20,22 @@ public class Meny {
 	public boolean nytArkivEllerLes() {
 		boolean lest = false;
 		System.out.println("Vil du: \n 1: Lese inn ett CD arkiv \n 2: Oprette et nytt CD arkiv \n Velg: ");
-
-		valg = in.nextInt();
+		
+		while (valg != 1 && valg != 2) {
+		try {
+		valg = Integer.parseInt(in.next());
+		} catch (Exception e) {
+			System.out.println("Velg enten 1 eller 2");
+			valg = 0;
+		}
+		}
+		
 		if (valg == 1) {
+			while (lest != true) {
 			System.out.println("Filnavn: ");
 			String fil = in.next();
-
+			
+			
 			try {
 				 
 					cda = Fil.lesFraFil(fil);
@@ -34,7 +44,7 @@ public class Meny {
 			} catch (FileNotFoundException e) {
 				System.out.println("Fil ikke funnet");
 			}
-
+			}
 		}
 
 		else if (valg == 2) {
