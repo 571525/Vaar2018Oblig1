@@ -18,10 +18,7 @@ public class CDarkiv implements CDarkivADT {
 	@Override
 	public void leggTilCd(CD nyCd) {
 
-		if (!erTom()) {
-			System.out.println("Ingen ledig plass");
-		}
-		else if (antall == cdTabel.length){
+		if (antall == cdTabel.length){
 			utvidKapasitet();
 		}
 		else {
@@ -32,7 +29,7 @@ public class CDarkiv implements CDarkivADT {
 	}
 	
 	private void utvidKapasitet(){
-		CD[] hjelpetabell = new CD[(int)Math.ceil(1.1 * cdTabel.length)]; 
+		CD[] hjelpetabell = new CD[(int)Math.ceil(1.5 * cdTabel.length)]; 
 		
 		for (int i = 0; i < cdTabel.length; i++){
 		      hjelpetabell[i] = cdTabel[i];
