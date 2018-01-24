@@ -5,7 +5,7 @@ public class LinearNode <T>{
 	private LinearNode<T> next;
 	private T element;
 	
-	//oppretter en tom node
+	//oppretter en tom node 
 	
 	public LinearNode() {
 		next = null;
