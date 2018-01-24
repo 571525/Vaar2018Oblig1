@@ -14,6 +14,7 @@ public class Tekstgrensesnitt {
 
 		CD ny = new CD();
 		
+		try {
 		System.out.println("Artist: ");
 		ny.setArtist(in.next());
 		System.out.println("Selskap: ");
@@ -26,6 +27,9 @@ public class Tekstgrensesnitt {
 		ny.setGenre(Genre.valueOf(in.next().toUpperCase()));
 		System.out.println("År: ");
 		ny.setReleaseYear(in.nextInt());
+		}catch (Exception e) {
+			System.out.println("Opgi korrekt data format.");
+		}
 
 		return ny;
 	}
@@ -34,7 +38,16 @@ public class Tekstgrensesnitt {
 	public void visCD(CD cd) {
 
 		try {
-			System.out.println(cd.toString());
+			String[] ny = cd.toString().split("#");
+			
+			System.out.println("Artist: " + ny[1]);
+			System.out.println("Selskap: " + ny[5]);
+			System.out.println("CD nummer: " + ny[0]);
+			System.out.println("CD Tittel: " + ny[2]);
+			System.out.println("Genre: " + ny[4]);
+			System.out.println("År: " + ny[3]);
+			System.out.println("");//Mellemrum
+			
 		} catch (Exception e) {
 			System.out.println("Fandt ikke CD'en");
 		}
@@ -46,7 +59,7 @@ public class Tekstgrensesnitt {
 		CD[] cd = cda.sokTittel(delstreng);
 
 		for (CD i : cd) {
-			System.out.println(i.toString());
+			visCD(i);
 		}
 
 	}
@@ -56,7 +69,7 @@ public class Tekstgrensesnitt {
 		CD[] ny = cda.sokArtist(delstreng);
 
 		for (CD i : ny) {
-			System.out.println(i.toString());
+			visCD(i);
 		}
 	}
 
