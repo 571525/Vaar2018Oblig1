@@ -13,11 +13,17 @@ public class Tekstgrensesnitt {
 		Scanner in = new Scanner(System.in);
 
 		CD ny = new CD();
-		ny.setArtist(in.nextLine());
-		ny.setCdCompany(in.nextLine());
+		System.out.println("Artist: ");
+		ny.setArtist(in.next());
+		System.out.println("Selskap: ");
+		ny.setCdCompany(in.next());
+		System.out.println("CD nummer: ");
 		ny.setCdNumber(in.nextInt());
-		ny.setCdTitle(in.nextLine());
-		ny.setGenre(Genre.valueOf(in.nextLine().toUpperCase()));
+		System.out.println("CD Tittel: ");
+		ny.setCdTitle(in.next());
+		System.out.println("Genre: ");
+		ny.setGenre(Genre.valueOf(in.next().toUpperCase()));
+		System.out.println("År: ");
 		ny.setReleaseYear(in.nextInt());
 
 		return ny;

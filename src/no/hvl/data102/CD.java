@@ -7,7 +7,7 @@ public class CD {
 	private String cdTitle;
 	private int releaseYear;
 	public enum Genre {POP, ROCK, OPERA, CLASSIC}
-	Genre genre;
+	private Genre genre;
 	private String cdCompany;
 		
 	public CD() {
