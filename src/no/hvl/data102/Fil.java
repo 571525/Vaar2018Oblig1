@@ -2,6 +2,7 @@ package no.hvl.data102;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import no.hvl.data102.CD.Genre;
 import no.hvl.data102.adt.CDarkivADT;
@@ -40,7 +41,18 @@ public class Fil {
 }
 
 	// Lagre et CDarkiv til tekstfil
-	public static void skrivTilFil(CDarkivADT cdarkiv, String filnav) {
+	public static void skrivTilFil(CDarkivADT cda, String filnavn) throws FileNotFoundException {
+		
+		File fil = new File(filnavn);
+		PrintWriter writer = new PrintWriter(fil);
+		int i = 0;
+		CD[] cd = cda.hentCdTabell();
+		
+		while(cd[i] != null && i < cd.length) {
+			writer.println(cd[i].toString());
+			i++;
+		}
+		writer.close();
 
 	}
 

@@ -13,6 +13,7 @@ public class Tekstgrensesnitt {
 		Scanner in = new Scanner(System.in);
 
 		CD ny = new CD();
+		
 		System.out.println("Artist: ");
 		ny.setArtist(in.next());
 		System.out.println("Selskap: ");
@@ -69,6 +70,6 @@ public class Tekstgrensesnitt {
 			System.out.println(genre[i] + ": " + cda.hentAntall(genre[i]));
 		}
 
-	} // ... Ev. andre metoder
+	}
 
 }
