@@ -31,12 +31,17 @@ public class CDarkiv2 implements CDarkivADT {
 	@Override
 	public boolean slettCd(int cdNr) {
 		boolean delete = false;
-		if(antall>0) {
-			
-			delete = start.getElement();
-			
-			antall--;
-			delete = true;
+		if(start == null) {  //sjekker om det er noen elementer
+			return delete;
+		}
+		
+		LinearNode<CD> tempNode = start;
+		
+		while(tempNode != null) {
+			if(tempNode.getElement().getCdNumber() == cdNr) { 
+				tempNode = tempNode.getNext();      //hopper over noden som har cdnummeret             
+				delete = true;
+			}
 		}
 		return delete;
 	}
