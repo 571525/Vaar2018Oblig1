@@ -33,40 +33,31 @@ public class CDarkiv2 implements CDarkivADT {
 
 	@Override
 	public void leggTilCd(CD nyCd) {
-
-		LinearNode<CD> ny = new LinearNode<CD>(nyCd);
-		ny.setNext(start);
-		start = ny;
+		LinearNode<CD> newNode = new LinearNode<CD>(nyCd);
+		newNode.setNext(start); // Setter node til start 
+		start = newNode; //N� er start den nye noden
 		antall++;
+		
 	}
 
 	@Override
 	public boolean slettCd(int cdNr) {
-		boolean slettet = false;
-		LinearNode<CD> denne = start;
-
-		if (antall == 0) {
-			System.out.println("CD arkivet er tomt.");
-		} else if (denne.getElement().getCdNumber() == cdNr) { // If it's the first element we need to delete.
-			start = start.getNext();
-			antall--;
+		boolean delete = false;
+		if(start == null) {  //sjekker om det er noen elementer
+			return delete;
 		}
-
-		else {
-			while (slettet != true && denne != null) {
-				if (denne.getNext().getElement().getCdNumber() == cdNr) {
-					LinearNode<CD> neste = denne.getNext();
-					denne.setNext(neste.getNext());
-					antall--;
-					slettet = true;
-				} else {
-					denne = denne.getNext();
-				}
+		
+		LinearNode<CD> tempNode = start;
+		
+		while(tempNode != null) {
+			if(tempNode.getElement().getCdNumber() == cdNr) { 
+				tempNode = tempNode.getNext();      //hopper over noden som har cdnummeret             
+				delete = true;
 			}
 		}
-		return slettet;
+		return delete;
 	}
-
+	
 	@Override
 	public CD[] sokTittel(String delstreng) {
 
@@ -136,5 +127,4 @@ public class CDarkiv2 implements CDarkivADT {
 		return nr;
 	}
 	
-
 }
