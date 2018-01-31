@@ -48,7 +48,7 @@ public class Meny {
 		}
 
 		else if (valg == 2) {
-			//this.cda = new CDarkiv(100);
+			this.cda = new CDarkiv2();
 			lest = true;
 		}
 		return lest;
