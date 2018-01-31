@@ -34,30 +34,43 @@ public class CDarkiv2 implements CDarkivADT {
 	@Override
 	public void leggTilCd(CD nyCd) {
 		LinearNode<CD> newNode = new LinearNode<CD>(nyCd);
-		newNode.setNext(start); // Setter node til start 
-		start = newNode; //N� er start den nye noden
+		newNode.setNext(start); // Setter node til start
+		start = newNode; // N� er start den nye noden
 		antall++;
-		
+
 	}
 
 	@Override
 	public boolean slettCd(int cdNr) {
 		boolean delete = false;
-		if(start == null) {  //sjekker om det er noen elementer
+		LinearNode<CD> tempNode = start;
+		LinearNode<CD> neste = tempNode.getNext();
+
+		if (start == null) { // sjekker om det er noen elementer
+			return delete;
+		} 
+		if (start.getElement().getCdNumber()== cdNr) {
+			start = start.getNext();	
+			antall--;
+			delete = true;
 			return delete;
 		}
-		
-		LinearNode<CD> tempNode = start;
-		
-		while(tempNode != null) {
-			if(tempNode.getElement().getCdNumber() == cdNr) { 
-				tempNode = tempNode.getNext();      //hopper over noden som har cdnummeret             
-				delete = true;
+
+			while (tempNode != null && delete != true) {
+				if (neste.getElement().getCdNumber() == cdNr) {
+					tempNode.setNext(neste.getNext()); // hopper over noden som har cdnummeret
+					delete = true;
+					antall--;
+				}else if (neste.getElement().getCdNumber() == cdNr && neste == null) {
+					tempNode = null;
+					antall--;
+				} else {
+					tempNode = tempNode.getNext();
+				}
 			}
-		}
 		return delete;
 	}
-	
+
 	@Override
 	public CD[] sokTittel(String delstreng) {
 
@@ -114,17 +127,16 @@ public class CDarkiv2 implements CDarkivADT {
 	public int hentAntall(Genre sjanger) {
 		LinearNode<CD> denne = start;
 		int nr = 0;
-		
-		while(denne != null) {
+
+		while (denne != null) {
 			if (denne.getElement().getGenre() == sjanger) {
 				nr++;
 				denne = denne.getNext();
-			}
-			else {
+			} else {
 				denne = denne.getNext();
 			}
 		}
 		return nr;
 	}
-	
+
 }

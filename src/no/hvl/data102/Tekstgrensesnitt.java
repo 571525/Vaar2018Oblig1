@@ -46,7 +46,6 @@ public class Tekstgrensesnitt {
 			System.out.println("CD Tittel: " + ny[2]);
 			System.out.println("Genre: " + ny[4]);
 			System.out.println("År: " + ny[3]);
-			System.out.println("");//Mellemrum
 			
 		} catch (Exception e) {
 			System.out.println("Fandt ikke CD'en");

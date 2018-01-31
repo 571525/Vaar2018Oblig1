@@ -105,7 +105,13 @@ public class Meny {
 					try {
 						System.out.println("CD nummer til CD der skal slettes: ");
 						int cdSlett = Integer.parseInt(in.next());
-						cda.slettCd(cdSlett);
+						boolean slettet = cda.slettCd(cdSlett);
+						if (slettet) {
+							System.out.println("CD "+ cdSlett + " blev slettet.");
+							}
+						else {
+							System.out.println("CD " + cdSlett + " ikke slettet.");
+						}
 					} catch (Exception e) {
 						System.out.println("FEIL! CD blev ikke slettet eller ikke funnet");
 					}
