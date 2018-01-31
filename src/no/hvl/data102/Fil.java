@@ -19,7 +19,7 @@ public class Fil {
 	// Lese et CDarkiv fra tekstfil
 	public static CDarkivADT lesFraFil(String filnavn) throws FileNotFoundException { 
 		
-		CDarkivADT cda = new CDarkiv(100); // Er det lovligt med en objektreferanse her????
+		CDarkivADT cda = new CDarkiv2(); // Er det lovligt med en objektreferanse her????
 		
 		Scanner scanner = new Scanner(new File(filnavn));
 		

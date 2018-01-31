@@ -2,7 +2,7 @@ package no.hvl.data102;
 
 import no.hvl.data102.CD.Genre;
 import no.hvl.data102.adt.CDarkivADT;
-
+/*
 
 public class CDarkiv implements CDarkivADT {
 
@@ -119,3 +119,4 @@ public class CDarkiv implements CDarkivADT {
 	
 	
 }
+*/

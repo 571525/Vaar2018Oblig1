@@ -8,8 +8,9 @@ public class CDarkiv2 implements CDarkivADT {
 	private int antall = 0;
 	private LinearNode<CD> start;
 
-	private CDarkiv2() {
-
+	public CDarkiv2() {
+		start = null;
+		antall = 0;
 	}
 
 	@Override
@@ -22,7 +23,7 @@ public class CDarkiv2 implements CDarkivADT {
 		if (antall == 0) {
 			System.out.println("CD arkivet er tomt");
 		} else {
-			while (i < antall && denne.getNext() != null) {
+			while (i < antall && denne != null) {
 				tab[i] = denne.getElement();
 				denne = denne.getNext();
 			}
@@ -36,6 +37,7 @@ public class CDarkiv2 implements CDarkivADT {
 		LinearNode<CD> ny = new LinearNode<CD>(nyCd);
 		ny.setNext(start);
 		start = ny;
+		antall++;
 	}
 
 	@Override
@@ -51,7 +53,7 @@ public class CDarkiv2 implements CDarkivADT {
 		}
 
 		else {
-			while (slettet != true && denne.getElement() != null) {
+			while (slettet != true && denne != null) {
 				if (denne.getNext().getElement().getCdNumber() == cdNr) {
 					LinearNode<CD> neste = denne.getNext();
 					denne.setNext(neste.getNext());
@@ -75,7 +77,7 @@ public class CDarkiv2 implements CDarkivADT {
 		if (antall == 0) {
 			System.out.println("Arkivet er tomt");
 		} else {
-			while (denne.getElement() != null) {
+			while (denne != null) {
 				if (denne.getElement().getCdTitle().contains(delstreng)) {
 					tab[i] = denne.getElement();
 					i++;
@@ -98,7 +100,7 @@ public class CDarkiv2 implements CDarkivADT {
 		if (antall == 0) {
 			System.out.println("Arkivet er tomt");
 		} else {
-			while (denne.getElement() != null) {
+			while (denne != null) {
 				if (denne.getElement().getArtist().contains(delstreng)) {
 					tab[i] = denne.getElement();
 					i++;
@@ -122,7 +124,7 @@ public class CDarkiv2 implements CDarkivADT {
 		LinearNode<CD> denne = start;
 		int nr = 0;
 		
-		while(denne.getElement() != null) {
+		while(denne != null) {
 			if (denne.getElement().getGenre() == sjanger) {
 				nr++;
 				denne = denne.getNext();
