@@ -7,6 +7,7 @@ public class CDarkiv2 implements CDarkivADT {
 
 	private int antall = 0;
 	private LinearNode<CD> start;
+	private final String TOM = "CD arkivet er tomt";
 
 	public CDarkiv2() {
 		start = null;
@@ -20,12 +21,13 @@ public class CDarkiv2 implements CDarkivADT {
 		int i = 0;
 		LinearNode<CD> denne = start;
 
-		if (antall == 0) {
-			System.out.println("CD arkivet er tomt");
+		if (start == null) {
+			System.out.println(TOM);
 		} else {
 			while (i < antall && denne != null) {
 				tab[i] = denne.getElement();
 				denne = denne.getNext();
+				i++;
 			}
 		}
 		return tab;
@@ -48,26 +50,29 @@ public class CDarkiv2 implements CDarkivADT {
 
 		if (start == null) { // sjekker om det er noen elementer
 			return delete;
-		} 
-		if (start.getElement().getCdNumber()== cdNr) {
-			start = start.getNext();	
+		}
+		if (start.getElement().getCdNumber() == cdNr) { // hvis det er første element der skal slettes
+			start = start.getNext();
 			antall--;
-			delete = true;
-			return delete;
+			return true;
 		}
 
-			while (tempNode != null && delete != true) {
-				if (neste.getElement().getCdNumber() == cdNr) {
-					tempNode.setNext(neste.getNext()); // hopper over noden som har cdnummeret
-					delete = true;
-					antall--;
-				}else if (neste.getElement().getCdNumber() == cdNr && neste == null) {
-					tempNode = null;
-					antall--;
-				} else {
-					tempNode = tempNode.getNext();
-				}
+		while (tempNode != null && delete != true) {
+
+			if (tempNode.getElement().getCdNumber() == cdNr && neste == null) {// Hvis det er sidste elemente der skal
+																				// slettes.
+				tempNode = null;
+				antall--;
 			}
+			if (neste.getElement().getCdNumber() == cdNr) {// sletter noder midt i tabellen
+				tempNode.setNext(neste.getNext()); // hopper over noden som har cdnummeret
+				delete = true;
+				antall--;
+
+			} else {
+				tempNode = tempNode.getNext();
+			}
+		}
 		return delete;
 	}
 
@@ -79,7 +84,7 @@ public class CDarkiv2 implements CDarkivADT {
 		LinearNode<CD> denne = start;
 
 		if (antall == 0) {
-			System.out.println("Arkivet er tomt");
+			System.out.println(TOM);
 		} else {
 			while (denne != null) {
 				if (denne.getElement().getCdTitle().contains(delstreng)) {
@@ -102,7 +107,7 @@ public class CDarkiv2 implements CDarkivADT {
 		LinearNode<CD> denne = start;
 
 		if (antall == 0) {
-			System.out.println("Arkivet er tomt");
+			System.out.println(TOM);
 		} else {
 			while (denne != null) {
 				if (denne.getElement().getArtist().contains(delstreng)) {

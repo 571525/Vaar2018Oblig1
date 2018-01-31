@@ -83,5 +83,12 @@ public class Tekstgrensesnitt {
 		}
 
 	}
+	
+	public void skrivAlle(CDarkivADT cda) {
+		for(CD cd : cda.hentCdTabell()) {
+			visCD(cd);
+			System.out.println();
+		}
+	}
 
 }

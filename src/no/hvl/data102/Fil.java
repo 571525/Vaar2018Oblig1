@@ -48,12 +48,11 @@ public class Fil {
 		int i = 0;
 		CD[] cd = cda.hentCdTabell();
 		
-		while(cd[i] != null && i < cd.length) {
+		while(i < cd.length) {
 			writer.println(cd[i].toString());
 			i++;
 		}
 		writer.close();
-
 	}
 
 }

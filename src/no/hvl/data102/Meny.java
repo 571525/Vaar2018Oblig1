@@ -26,7 +26,7 @@ public class Meny {
 				valg = Integer.parseInt(in.next());
 			} catch (Exception e) {
 				System.out.println("Velg enten 1 eller 2");
-				valg = 0;
+				valg = -1;
 			}
 		}
 
@@ -65,7 +65,7 @@ public class Meny {
 
 			do {
 				System.out.println("\n" + "1: Legg CD til arkiv \n" + "2: Søk en CD \n" + "3: Søk artist \n"
-						+ "4: Skriv ut Statistikk \n" + "5: Lagre CD arkiv på fil \n" + "6: Slette CD \n"
+						+ "4: Skriv ut Statistikk \n" + "5: Lagre CD arkiv på fil \n" + "6: Slette CD \n"+ "7: Vis hele arkiv \n"
 						+ "0: Avslutt");
 
 				valg = in.nextInt();
@@ -115,6 +115,10 @@ public class Meny {
 					} catch (Exception e) {
 						System.out.println("FEIL! CD blev ikke slettet eller ikke funnet");
 					}
+					break;
+				}
+				case 7: {
+					tekstgr.skrivAlle(cda);
 					break;
 				}
 				}
