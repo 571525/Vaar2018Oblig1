@@ -20,30 +20,29 @@ public class Meny {
 	public boolean nytArkivEllerLes() {
 		boolean lest = false;
 		System.out.println("Vil du: \n 1: Lese inn ett CD arkiv \n 2: Oprette et nytt CD arkiv \n Velg: ");
-		
+
 		while (valg != 1 && valg != 2) {
-		try {
-		valg = Integer.parseInt(in.next());
-		} catch (Exception e) {
-			System.out.println("Velg enten 1 eller 2");
-			valg = 0;
+			try {
+				valg = Integer.parseInt(in.next());
+			} catch (Exception e) {
+				System.out.println("Velg enten 1 eller 2");
+				valg = 0;
+			}
 		}
-		}
-		
+
 		if (valg == 1) {
 			while (lest != true) {
-			System.out.println("Filnavn: ");
-			String fil = in.next();
-			
-			
-			try {
-				 
+				System.out.println("Filnavn: ");
+				String fil = in.next();
+
+				try {
+
 					cda = Fil.lesFraFil(fil);
 					lest = true;
 
-			} catch (FileNotFoundException e) {
-				System.out.println("Fil ikke funnet");
-			}
+				} catch (FileNotFoundException e) {
+					System.out.println("Fil ikke funnet");
+				}
 			}
 		}
 
@@ -66,7 +65,8 @@ public class Meny {
 
 			do {
 				System.out.println("\n" + "1: Legg CD til arkiv \n" + "2: Søk en CD \n" + "3: Søk artist \n"
-						+ "4: Skriv ut Statistikk \n" + "5: Lagre CD arkiv på fil \n" + "0: Avslutt");
+						+ "4: Skriv ut Statistikk \n" + "5: Lagre CD arkiv på fil \n" + "6: Slette CD \n"
+						+ "0: Avslutt");
 
 				valg = in.nextInt();
 				switch (valg) {
@@ -98,6 +98,16 @@ public class Meny {
 						Fil.skrivTilFil(cda, filnavn);
 					} catch (FileNotFoundException e) {
 						System.out.println("Feil ved skriving");
+					}
+					break;
+				}
+				case 6: {
+					try {
+						System.out.println("CD nummer til CD der skal slettes: ");
+						int cdSlett = Integer.parseInt(in.next());
+						cda.slettCd(cdSlett);
+					} catch (Exception e) {
+						System.out.println("FEIL! CD blev ikke slettet eller ikke funnet");
 					}
 					break;
 				}
