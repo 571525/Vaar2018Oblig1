@@ -94,8 +94,18 @@ public class CDarkiv implements CDarkivADT {
 				j++;
 			}
 		}
+		hjelpeTab = trimTab(hjelpeTab, j);
 		return hjelpeTab;
 	}
+
+	private CD[] trimTab(CD[] tab, int n) { // n er antall elementer CD[] cdtab2 = new CD[n];
+		int i = 0;
+		CD[] cdtab2 = new CD[n];
+		while (i < n) {
+		         cdtab2[i] = tab[i];
+		         i++;
+		   }//while
+		return cdtab2; }//
 
 	@Override
 	public int hentAntall() {

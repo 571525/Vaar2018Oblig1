@@ -10,7 +10,7 @@ public class Meny {
 	private Tekstgrensesnitt tekstgr;
 	private CDarkivADT cda;
 	private Scanner in = new Scanner(System.in);
-	int valg;
+	private int valg = -1;
 
 	public Meny(CDarkivADT cda) {
 		tekstgr = new Tekstgrensesnitt();
@@ -23,25 +23,26 @@ public class Meny {
 
 		while (valg != 1 && valg != 2) {
 			try {
-				valg = Integer.parseInt(in.next());
+				valg = Integer.parseInt(in.nextLine());
 			} catch (Exception e) {
 				System.out.println("Velg enten 1 eller 2");
 				valg = -1;
 			}
 		}
-
+		
+		int stop = 0;
 		if (valg == 1) {
-			while (lest != true) {
+			while (lest != true && stop < 5) {
 				System.out.println("Filnavn: ");
 				String fil = in.next();
-
+				
 				try {
-
 					cda = Fil.lesFraFil(fil);
 					lest = true;
 
 				} catch (FileNotFoundException e) {
 					System.out.println("Fil ikke funnet");
+					stop++;
 				}
 			}
 		}
@@ -56,9 +57,9 @@ public class Meny {
 	public void start() {
 
 		boolean start = false;
-
 		start = nytArkivEllerLes();
 
+		try {
 		if (start == false) {
 			System.out.println("Program avsluttet");
 		} else {
@@ -110,7 +111,7 @@ public class Meny {
 							System.out.println("CD "+ cdSlett + " blev slettet.");
 							}
 						else {
-							System.out.println("CD " + cdSlett + " ikke slettet.");
+							System.out.println("CD " + cdSlett + "blev ikke slettet.");
 						}
 					} catch (Exception e) {
 						System.out.println("FEIL! CD blev ikke slettet eller ikke funnet");
@@ -125,6 +126,8 @@ public class Meny {
 			} while (valg != 0);
 		}
 
+	}catch(Exception e) {
+		System.out.println("Opgi rett datatype.");
 	}
-
+	}
 }

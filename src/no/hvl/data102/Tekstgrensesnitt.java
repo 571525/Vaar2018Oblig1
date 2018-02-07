@@ -11,18 +11,19 @@ public class Tekstgrensesnitt {
 	public CD lesCD() {
 
 		Scanner in = new Scanner(System.in);
+		
 
 		CD ny = new CD();
-		
+			
 		try {
 		System.out.println("Artist: ");
-		ny.setArtist(in.next());
+		ny.setArtist(in.nextLine());
 		System.out.println("Selskap: ");
-		ny.setCdCompany(in.next());
+		ny.setCdCompany(in.nextLine());
 		System.out.println("CD nummer: ");
-		ny.setCdNumber(in.nextInt());
+		ny.setCdNumber(Integer.parseInt(in.nextLine()));
 		System.out.println("CD Tittel: ");
-		ny.setCdTitle(in.next());
+		ny.setCdTitle(in.nextLine());
 		System.out.println("Genre: ");
 		ny.setGenre(Genre.valueOf(in.next().toUpperCase()));
 		System.out.println("År: ");
@@ -46,6 +47,7 @@ public class Tekstgrensesnitt {
 			System.out.println("CD Tittel: " + ny[2]);
 			System.out.println("Genre: " + ny[4]);
 			System.out.println("År: " + ny[3]);
+			System.out.println();
 			
 		} catch (Exception e) {
 			System.out.println("Fandt ikke CD'en");
@@ -87,8 +89,7 @@ public class Tekstgrensesnitt {
 	public void skrivAlle(CDarkivADT cda) {
 		for(CD cd : cda.hentCdTabell()) {
 			visCD(cd);
-			System.out.println();
-		}
+			}
 	}
 
 }

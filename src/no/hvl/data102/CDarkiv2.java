@@ -96,7 +96,7 @@ public class CDarkiv2 implements CDarkivADT {
 				}
 			}
 		}
-
+		tab = trimTab(tab, i);
 		return tab;
 	}
 
@@ -118,11 +118,22 @@ public class CDarkiv2 implements CDarkivADT {
 					denne = denne.getNext();
 				}
 			}
+			tab = trimTab(tab, i);
 		}
 
 		return tab;
 	}
 
+	private CD[] trimTab(CD[] tab, int n) { // n er antall elementer CD[] cdtab2 = new CD[n];
+		int i = 0;
+		CD[] cdtab2 = new CD[n];
+		while (i < n) {
+		         cdtab2[i] = tab[i];
+		         i++;
+		   }
+		return cdtab2; 
+	}
+	
 	@Override
 	public int hentAntall() {
 		return antall;
