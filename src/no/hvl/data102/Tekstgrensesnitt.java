@@ -7,7 +7,9 @@ import no.hvl.data102.adt.CDarkivADT;
 
 public class Tekstgrensesnitt {
 
-	// lese opplysningene om en CD fra tastatur
+	/** leser opplysningene om en CD fra tastatur
+	 * @return CD som er blevet oprettet.
+	 */
 	public CD lesCD() {
 
 		Scanner in = new Scanner(System.in);
@@ -35,7 +37,9 @@ public class Tekstgrensesnitt {
 		return ny;
 	}
 
-	// vise en CD med alle opplysninger på skjerm (husk tekst for sjanger)
+	/** Viser en CD med alle opplysninger på skjerm
+	 * @param cd
+	 */
 	public void visCD(CD cd) {
 
 		try {
@@ -54,7 +58,10 @@ public class Tekstgrensesnitt {
 		}
 	}
 
-	// Skrive ut alle CD-er med en spesiell delstreng i tittelen
+	/** Skriver ut alle CD-er med en spesiell delstreng i tittelen
+	 * @param cda
+	 * @param delstreng
+	 */
 	public void skrivUtCdDelstrengITittel(CDarkivADT cda, String delstreng) {
 
 		CD[] cd = cda.sokTittel(delstreng);
@@ -65,7 +72,10 @@ public class Tekstgrensesnitt {
 
 	}
 
-	// Skriver ut alle CD-er av en artist / en gruppe
+	/** Skriver ut alle CD-er av en artist / en gruppe
+	 * @param cda
+	 * @param delstreng
+	 */
 	public void skrivUtCdArtist(CDarkivADT cda, String delstreng) {
 		CD[] ny = cda.sokArtist(delstreng);
 
@@ -74,11 +84,14 @@ public class Tekstgrensesnitt {
 		}
 	}
 
-	// Skrive ut en enkel statistikk som inneholder antall CD-er totalt
-	// og hvor mange det er i hver sjanger
-
+	/** Skrive ut en enkel statistikk som inneholder antall CD-er totalt
+	 * og hvor mange det er i hver sjanger
+	 * @param cda
+	 */
 	public void skrivUtStatistikk(CDarkivADT cda) {
 		Genre[] genre = Genre.values();
+		
+		System.out.println("Total antall CD'er: " + cda.hentAntall());
 
 		for (int i = 0; i < genre.length; i++) {
 			System.out.println(genre[i] + ": " + cda.hentAntall(genre[i]));

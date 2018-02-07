@@ -2,7 +2,7 @@ package no.hvl.data102;
 
 import no.hvl.data102.CD.Genre;
 import no.hvl.data102.adt.CDarkivADT;
-/*
+/* CDarkiv2 er implementer og bliver brukt nå. 
 
 public class CDarkiv implements CDarkivADT {
 

@@ -16,7 +16,10 @@ public class Meny {
 		tekstgr = new Tekstgrensesnitt();
 		this.cda = cda;
 	}
-
+	
+/** Metode til enten å lese inn et arkiv eller oprette ett nytt arkiv
+ * @return true, hvis metoden blev kjørt successfuldt.
+ */
 	public boolean nytArkivEllerLes() {
 		boolean lest = false;
 		System.out.println("Vil du: \n 1: Lese inn ett CD arkiv \n 2: Oprette et nytt CD arkiv \n Velg: ");
@@ -54,6 +57,9 @@ public class Meny {
 		return lest;
 	}
 
+	/** Starter menyen og opretter valg.
+	 * @return void.
+	 */
 	public void start() {
 
 		boolean start = false;

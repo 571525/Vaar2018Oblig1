@@ -12,11 +12,13 @@ import no.hvl.data102.adt.CDarkivADT;
 
 public class Fil {
 
-	// TODO skrive fil ferdig
+	final static String SKILLE = "#";
 
-	final static String SKILLE = "#"; // Eventuelt ha som parameter i metodene.
-
-	// Lese et CDarkiv fra tekstfil
+	/** Lese et CDarkiv fra tekstfil
+	 * @param filnavn
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public static CDarkivADT lesFraFil(String filnavn) throws FileNotFoundException { 
 		
 		CDarkivADT cda = new CDarkiv2(); // Er det lovligt med en objektreferanse her????
@@ -40,7 +42,12 @@ public class Fil {
     return cda;
 }
 
-	// Lagre et CDarkiv til tekstfil
+	/**
+	 * Lagrer et CDarkiv til tekstfil
+	 * @param cda
+	 * @param filnavn
+	 * @throws FileNotFoundException
+	 */
 	public static void skrivTilFil(CDarkivADT cda, String filnavn) throws FileNotFoundException {
 		
 		File fil = new File(filnavn);
